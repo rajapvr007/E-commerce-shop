@@ -10,7 +10,7 @@ import { CartContext } from "../contexts/CartContext";
 const Sidebar = () => {
   // console.log(useContext(CartContext))
   const { isOpen, handleClose } = useContext(SidebarContext);
-  const { cart, clearCart, total,itemAmount } = useContext(CartContext);
+  const { cart, clearCart, total, itemAmount } = useContext(CartContext);
   return (
     <>
       <div
@@ -18,8 +18,11 @@ const Sidebar = () => {
           isOpen ? "right-0" : "-right-full"
         } w-full bg-white fixed top-0 h-full shadow-2xl md:w-[35vw] xl:max-w-[30vw] transition-all duration-300 z-20 px-4 lg:px-[35px] `}
       >
+         {/* {shopping bag button and close button of sidebar }    */}
         <div className="flex items-center justify-between py-6 border-b">
-          <div className="text-sm font-semibold uppercase">Shopping Bag({itemAmount})</div>
+          <div className="text-sm font-semibold uppercase">
+            Shopping Bag({itemAmount})
+          </div>
           <div
             className="flex items-center justify-center w-12 h-12 text-2xl cursor-pointer"
             onClick={handleClose}
@@ -27,6 +30,8 @@ const Sidebar = () => {
             <IoMdArrowForward />
           </div>
         </div>
+
+
         <div className=" flex flex-col gap-y-2 h-[500px] lg:h-[420px] overflow-y-auto overflow-x-hidden border-b">
           {cart.map((item) => {
             return <CartItem item={item} key={item.id} />;
@@ -47,10 +52,16 @@ const Sidebar = () => {
           </div>
           <Link
             to={"/"}
-            className="flex items-center justify-center py-4 font-medium bg-gray-200 text-primary">View Cart</Link>
-            <Link
+            className="flex items-center justify-center py-4 font-medium bg-gray-200 text-primary"
+          >
+            View Cart
+          </Link>
+          <Link
             to={"/"}
-            className="flex items-center justify-center py-4 font-medium text-white bg-primary">checkout</Link>
+            className="flex items-center justify-center py-4 font-medium text-white bg-primary"
+          >
+            checkout
+          </Link>
         </div>
       </div>
     </>
